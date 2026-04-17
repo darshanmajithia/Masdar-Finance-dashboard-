@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Masdar FP&A | Renewable Energy Scorecard</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- BoxIcons -->
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="style.css">
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="app-container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <!-- A stylistic logo for Masdar FP&A -->
+                <div class="logo">
+                    <i class='bx bxs-car-battery'></i>
+                    <span>Masdar FP&A</span>
+                </div>
+            </div>
+            <ul class="nav-links">
+                <li class="active"><a href="#"><i class='bx bx-grid-alt'></i> <span>Portfolio Overview</span></a></li>
+                <li><a href="#"><i class='bx bx-line-chart'></i> <span>Financial Performance</span></a></li>
+                <li><a href="#"><i class='bx bx-world'></i> <span>Asset Yield</span</a></li>
+                <li><a href="#"><i class='bx bx-folder-plus'></i> <span>CapEx tracker</span></a></li>
+                <li><a href="#"><i class='bx bx-file'></i> <span>Consolidation</span></a></li>
+            </ul>
+            
+            <div class="sidebar-footer">
+                <div class="user-profile">
+                    <img src="../headshot.jpg" alt="CA Darshan Majithia" onerror="this.src='https://ui-avatars.com/api/?name=Darshan+Majithia&background=0A1E3F&color=fff'">
+                    <div class="user-info">
+                        <h4>CA Darshan Majithia</h4>
+                        <p>FP&A Group Analyst</p>
+                    </div>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Header -->
+            <header class="top-header">
+                <div class="header-title">
+                    <h1>Group Performance Scorecard</h1>
+                    <p>Global Renewable Portfolio Q3 2026 Snapshot</p>
+                </div>
+                <div class="header-actions">
+                    <div class="search-bar">
+                        <i class='bx bx-search'></i>
+                        <input type="text" placeholder="Search entity or project...">
+                    </div>
+                    <button class="btn-icon"><i class='bx bx-bell'></i></button>
+                    <button class="btn-export"><i class='bx bx-export'></i> Export PDF</button>
+                </div>
+            </header>
+
+            <!-- Dashboard Content -->
+            <div class="dashboard-grid">
+                <!-- KPI Cards -->
+                <div class="kpi-cards">
+                    <div class="kpi-card">
+                        <div class="kpi-icon blue"><i class='bx bx-bolt-circle'></i></div>
+                        <div class="kpi-details">
+                            <h3>Total Installed Capacity</h3>
+                            <div class="kpi-value">
+                                <h2>25.4 <span>GW</span></h2>
+                                <span class="trend positive"><i class='bx bx-up-arrow-alt'></i> +1.2 GW YTD</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="kpi-card">
+                        <div class="kpi-icon green"><i class='bx bx-dollar-circle'></i></div>
+                        <div class="kpi-details">
+                            <h3>Consolidated Revenue</h3>
+                            <div class="kpi-value">
+                                <h2>$1.42 <span>B</span></h2>
+                                <span class="trend positive"><i class='bx bx-up-arrow-alt'></i> +8.5% YoY</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="kpi-card">
+                        <div class="kpi-icon teal"><i class='bx bx-line-chart-down'></i></div>
+                        <div class="kpi-details">
+                            <h3>EBITDA Margin</h3>
+                            <div class="kpi-value">
+                                <h2>64.8 <span>%</span></h2>
+                                <span class="trend positive"><i class='bx bx-up-arrow-alt'></i> +2.1 bps</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="kpi-card">
+                        <div class="kpi-icon orange"><i class='bx bx-tachometer'></i></div>
+                        <div class="kpi-details">
+                            <h3>Avg. OpEx / MWh</h3>
+                            <div class="kpi-value">
+                                <h2>$18.40</h2>
+                                <span class="trend negative"><i class='bx bx-up-arrow-alt'></i> +4.2% vs Bdgt</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Charts Row 1 -->
+                <div class="charts-row">
+                    <div class="chart-container span-2">
+                        <div class="chart-header">
+                            <h3>Generation vs Forecast (GWh)</h3>
+                        </div>
+                        <canvas id="generationChart"></canvas>
+                    </div>
+                    <div class="chart-container">
+                        <div class="chart-header">
+                            <h3>Portfolio Mix (Capacity)</h3>
+                        </div>
+                        <div class="doughnut-wrapper">
+                            <canvas id="portfolioMixChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Charts Row 2 -->
+                <div class="charts-row">
+                    <div class="chart-container span-3">
+                        <div class="chart-header">
+                            <h3>Regional Financial Performance (M USD)</h3>
+                        </div>
+                        <canvas id="regionalEbitdaChart"></canvas>
+                    </div>
+                </div>
+
+                <!-- Data Table -->
+                <div class="data-table-container">
+                    <div class="table-header">
+                        <h3>Key Operational Assets</h3>
+                        <button class="btn-text">View Full Register <i class='bx bx-chevron-right'></i></button>
+                    </div>
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Project Name</th>
+                                <th>Technology</th>
+                                <th>Location</th>
+                                <th>Capacity (MW)</th>
+                                <th>Actual Yield (GWh)</th>
+                                <th>Var vs Budget</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody id="assetTableBody">
+                            <!-- Populated by JS -->
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+        </main>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>
